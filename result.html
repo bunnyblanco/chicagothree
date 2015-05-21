@@ -276,21 +276,210 @@ A.SiteMap:hover {
       </table><br><br>
    </body>
    <BODY>
-      <TABLE WIDTH="640">
+      <TABLE WIDTH="585">
          <TR>
-            <TD COLSPAN="1" ALIGN="LEFT"><br><br><font face="Arial,Helvetica,sans-serif" size="3">
-                  <h1>Service Request Entry Error</h1>
-               </font>
-               <hr><br>
-               <p>Your session has timed out or the request you are working with has already been submitted.  Please Start Over.<br><br>
-                  <p><b><font color="red">Reference Number:</font> &nbsp; 1432176658554</b>
-                  </p>
-               </p><br><br>
-               <p><b><a href="Controller?op=reset">Start Over</a>&nbsp;&nbsp;&nbsp;</b>
+            <TD COLSPAN="1" ALIGN="LEFT">
+               <p>
+                  <h1>City government is here to serve you, and help is just a few clicks away. 
+        <br><br>
+        The pull-down window at the bottom of this page lists some of the most commonly requested services, from removing an abandoned vehicle to reporting a vacant or abandoned building to replacing a lightbulb on your street or alley. 
+        <br><br>
+        To submit a request, select from the pull-down list or enter a key word in the other window. Then click "go" and follow the instructions. 
+        <br>
+        IF YOU BELIEVE THIS IS AN URGENT CITY SERVICE REQUEST, REQUIRING IMMEDIATE ATTENTION, SUCH AS A BROKEN WATER MAIN OR A STREET CAVE-IN, PLEASE CALL 311 FOR IMMEDIATE ASSISTANCE. 
+        <br><br>
+        You may enter your e-mail address to receive a confirmation that your request has been received, or you may call 311, the City's non-emergency number, to verify the status of your request. People who live outside the City of Chicago may call 312-744-5000. 
+        <br><br>
+        Of course, you can still request these services by calling your alderman or 311. However you do it, we're committed to respond to your request quickly.</h1>
                </p>
             </TD>
          </TR>
       </TABLE>
+      <HR WIDTH="640" ALIGN="LEFT">
+      <table width="800" border="0" cellpadding="0" cellspacing="0">
+         <tr>
+            <td>
+               <FORM ACTION="Controller?op=locvalidate" METHOD="POST" NAME="motForm"><INPUT TYPE="hidden" NAME="invInterfaceType" VALUE="WEBINTAK"><INPUT TYPE="hidden" NAME="invSRTypeCode" VALUE=""><INPUT TYPE="hidden" NAME="invLocRequired" VALUE=""><INPUT TYPE="hidden" NAME="invStreetNumRequired" VALUE="">
+                  <TABLE border="0">
+                     <TR>
+                        <TD COLSPAN="1" ALIGN="RIGHT">&nbsp;</TD>
+                        <TD COLSPAN="6" ALIGN="LEFT"><IMG SRC="images/sr_address_hint.gif">
+                        </TD>
+                     </TR>
+                     <TR>
+                        <TD COLSPAN="1" ALIGN="RIGHT" NOWRAP="TRUE"><FONT COLOR="#FF0000"><I><B>STREET ADDRESS *</B>
+                              </I>
+                           </FONT>
+                        </TD>
+                        <TD COLSPAN="5" ALIGN="LEFT"><INPUT TYPE="text" NAME="invStreetNumber" SIZE="8" MAXLENGTH="8" onBlur="CSR_CheckRange(this,0,0)" VALUE=""><SELECT NAME="invStreetPrefix">
+                              <OPTION VALUE="">&nbsp;</OPTION>
+                              <OPTION VALUE="E">E
+		</OPTION>
+                              <OPTION VALUE="N">N
+		</OPTION>
+                              <OPTION VALUE="NE">NE
+		</OPTION>
+                              <OPTION VALUE="NW">NW
+		</OPTION>
+                              <OPTION VALUE="S">S
+		</OPTION>
+                              <OPTION VALUE="SE">SE
+		</OPTION>
+                              <OPTION VALUE="SW">SW
+		</OPTION>
+                              <OPTION VALUE="W">W
+		</OPTION>
+                           </SELECT><INPUT TYPE="text" NAME="invStreetName" SIZE="40" MAXLENGTH="40" onBlur="CSR_ForceUpperCase(this)" VALUE=""><SELECT NAME="invStreetSuffix">
+                              <OPTION VALUE="">&nbsp;</OPTION>
+                              <OPTION VALUE="ALY">Alley</OPTION>
+                              <OPTION VALUE="ANX">Annex</OPTION>
+                              <OPTION VALUE="ARC">Arcade</OPTION>
+                              <OPTION VALUE="AVE">Avenue</OPTION>
+                              <OPTION VALUE="BYU">Bayou</OPTION>
+                              <OPTION VALUE="BCH">Beach</OPTION>
+                              <OPTION VALUE="BLVD">Boulevard</OPTION>
+                              <OPTION VALUE="BRK">Brook</OPTION>
+                              <OPTION VALUE="BG">Burg</OPTION>
+                              <OPTION VALUE="CP">Camp</OPTION>
+                              <OPTION VALUE="CYN">Canyon</OPTION>
+                              <OPTION VALUE="CPE">Cape</OPTION>
+                              <OPTION VALUE="CSWY">Causeway</OPTION>
+                              <OPTION VALUE="CTR">Center</OPTION>
+                              <OPTION VALUE="CIR">Circle</OPTION>
+                              <OPTION VALUE="CLFS">Cliffs</OPTION>
+                              <OPTION VALUE="CLB">Club</OPTION>
+                              <OPTION VALUE="COR">Corner</OPTION>
+                              <OPTION VALUE="CORS">Corners</OPTION>
+                              <OPTION VALUE="CRSE">Course</OPTION>
+                              <OPTION VALUE="CT">Court</OPTION>
+                              <OPTION VALUE="CTS">Courts</OPTION>
+                              <OPTION VALUE="CV">Cove</OPTION>
+                              <OPTION VALUE="CRK">Creek</OPTION>
+                              <OPTION VALUE="CRES">Crescent</OPTION>
+                              <OPTION VALUE="XING">Crossing</OPTION>
+                              <OPTION VALUE="DL">Dale</OPTION>
+                              <OPTION VALUE="DM">Dam</OPTION>
+                              <OPTION VALUE="DV">Divide</OPTION>
+                              <OPTION VALUE="DR">Drive</OPTION>
+                              <OPTION VALUE="EST">Estates</OPTION>
+                              <OPTION VALUE="HWY">Estates</OPTION>
+                              <OPTION VALUE="EXPY">Expressway</OPTION>
+                              <OPTION VALUE="EXT">Extension</OPTION>
+                              <OPTION VALUE="FALL">Fall</OPTION>
+                              <OPTION VALUE="FLS">Falls</OPTION>
+                              <OPTION VALUE="FRY">Ferry</OPTION>
+                              <OPTION VALUE="FLD">Field</OPTION>
+                              <OPTION VALUE="FLDS">Fields</OPTION>
+                              <OPTION VALUE="FLT">Flats</OPTION>
+                              <OPTION VALUE="FRD">Ford</OPTION>
+                              <OPTION VALUE="FRST">Forest</OPTION>
+                              <OPTION VALUE="PKWY">Parkway</OPTION>
+                              <OPTION VALUE="PATH">Path</OPTION>
+                              <OPTION VALUE="PIKE">Pike</OPTION>
+                              <OPTION VALUE="PNES">Pines</OPTION>
+                              <OPTION VALUE="PL">Place</OPTION>
+                              <OPTION VALUE="PLN">Plain</OPTION>
+                              <OPTION VALUE="PLNS">Plains</OPTION>
+                              <OPTION VALUE="PLZ">Plaza</OPTION>
+                              <OPTION VALUE="PT">Point</OPTION>
+                              <OPTION VALUE="PRT">Port</OPTION>
+                              <OPTION VALUE="PR">Prairie</OPTION>
+                              <OPTION VALUE="RADL">Radial</OPTION>
+                              <OPTION VALUE="RNCH">Ranch</OPTION>
+                              <OPTION VALUE="RPDS">Rapids</OPTION>
+                              <OPTION VALUE="RST">Rest</OPTION>
+                              <OPTION VALUE="RDG">Ridge</OPTION>
+                              <OPTION VALUE="RIV">River</OPTION>
+                              <OPTION VALUE="RD">Road</OPTION>
+                              <OPTION VALUE="ROW">Row</OPTION>
+                              <OPTION VALUE="RUN">Run</OPTION>
+                              <OPTION VALUE="SHL">Shoal</OPTION>
+                              <OPTION VALUE="SHLS">Shoals</OPTION>
+                              <OPTION VALUE="SHR">Shore</OPTION>
+                              <OPTION VALUE="SHRS">Shores</OPTION>
+                              <OPTION VALUE="SPG">Spring</OPTION>
+                              <OPTION VALUE="SPGS">Springs</OPTION>
+                              <OPTION VALUE="SPUR">Spur</OPTION>
+                              <OPTION VALUE="SQ">Square</OPTION>
+                              <OPTION VALUE="STA">Station</OPTION>
+                              <OPTION VALUE="STRM">Stream</OPTION>
+                              <OPTION VALUE="ST">Street</OPTION>
+                              <OPTION VALUE="SMT">Summit</OPTION>
+                              <OPTION VALUE="TER">Terrace</OPTION>
+                              <OPTION VALUE="TRCE">Trace</OPTION>
+                              <OPTION VALUE="TRAK">Track</OPTION>
+                              <OPTION VALUE="TRL">Trail</OPTION>
+                              <OPTION VALUE="TUNL">Tunnel</OPTION>
+                              <OPTION VALUE="TPKE">Turnpike</OPTION>
+                              <OPTION VALUE="UN">Union</OPTION>
+                              <OPTION VALUE="VLY">Valley</OPTION>
+                              <OPTION VALUE="VIA">Viaduct</OPTION>
+                              <OPTION VALUE="VW">View</OPTION>
+                              <OPTION VALUE="VLG">Village</OPTION>
+                              <OPTION VALUE="VL">Ville</OPTION>
+                              <OPTION VALUE="VIS">Vista</OPTION>
+                              <OPTION VALUE="WALK">Walk</OPTION>
+                              <OPTION VALUE="WAY">Way</OPTION>
+                              <OPTION VALUE="WLS">Wells</OPTION>
+                              <OPTION VALUE="AV">AV</OPTION>
+                              <OPTION VALUE="BR">BR</OPTION>
+                              <OPTION VALUE="BV">BV</OPTION>
+                              <OPTION VALUE="CVS">CVS</OPTION>
+                              <OPTION VALUE="ER">ER</OPTION>
+                              <OPTION VALUE="LA">LA</OPTION>
+                              <OPTION VALUE="LN">LN</OPTION>
+                              <OPTION VALUE="LOCAL">LOCAL</OPTION>
+                              <OPTION VALUE="ORD">ORD</OPTION>
+                              <OPTION VALUE="PARK">PARK</OPTION>
+                              <OPTION VALUE="PK">PK</OPTION>
+                              <OPTION VALUE="PW">PW</OPTION>
+                              <OPTION VALUE="PZ">PZ</OPTION>
+                              <OPTION VALUE="RL">RL</OPTION>
+                              <OPTION VALUE="SD">SD</OPTION>
+                              <OPTION VALUE="SR">SR</OPTION>
+                              <OPTION VALUE="TOLL">TOLL</OPTION>
+                              <OPTION VALUE="VD">VD</OPTION>
+                              <OPTION VALUE="WY">WY</OPTION>
+                              <OPTION VALUE="XP">XP</OPTION>
+                              <OPTION VALUE="XPRSS">XPRSS</OPTION>
+                              <OPTION VALUE="XR">XR</OPTION>
+                              <OPTION VALUE="XRD">XRD</OPTION>
+                           </SELECT><SELECT NAME="invStreetSuffixDir">
+                              <OPTION VALUE="">&nbsp;</OPTION>
+                              <OPTION VALUE="E">E
+		</OPTION>
+                              <OPTION VALUE="N">N
+		</OPTION>
+                              <OPTION VALUE="NE">NE
+		</OPTION>
+                              <OPTION VALUE="NW">NW
+		</OPTION>
+                              <OPTION VALUE="S">S
+		</OPTION>
+                              <OPTION VALUE="SE">SE
+		</OPTION>
+                              <OPTION VALUE="SW">SW
+		</OPTION>
+                              <OPTION VALUE="W">W
+		</OPTION>
+                           </SELECT>
+                        </TD>
+                     </TR>
+                     <TR><INPUT TYPE="hidden" NAME="invCity" VALUE=""><INPUT TYPE="hidden" NAME="invStateCode" VALUE=""><INPUT TYPE="hidden" NAME="invZipCode" VALUE="">
+                     </TR>
+                     <TR><INPUT TYPE="hidden" NAME="invCounty" VALUE="">
+                     </TR>
+                     <TR><INPUT TYPE="hidden" NAME="invBuildingName" VALUE=""><INPUT TYPE="hidden" NAME="invFloor" VALUE=""><INPUT TYPE="hidden" NAME="invUnitNumber" VALUE="">
+                     </TR>
+                     <TR>
+                        <TD>&nbsp;</TD>
+                        <TD COLSPAN="6">&nbsp;</TD>
+                     </TR>
+                  </TABLE><INPUT TYPE="hidden" NAME="invJurisdictionCode" VALUE="CHICAGO"><INPUT TYPE="button" VALUE="Continue" class="button" onclick="javascript:validatelocForm(this.form)">
+               </FORM>
+            </td>
+         </tr>
+      </table>
    </BODY>
    <FOOTER><br><br>
    </FOOTER>
