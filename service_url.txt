@@ -1,0 +1,11 @@
+http://dev.cityofchicago.org/docs/api/service_list
+http://dev.cityofchicago.org/docs/api/service_definition
+https://servicerequest.cityofchicago.org/web_intake_chic/Controller?op=locform&invSRType=PETCO&invSRDesc=Petcoke%20Dust&locreq=Y&stnumreqd=Y
+https://servicerequest.cityofchicago.org/web_intake_chic/Controller?op=locform&invSRType=SCQ&invSRDesc=Yard%20Waste&locreq=N&stnumreqd=N
+"http://311api.cityofchicago.org/open311/v2/services.json"
+https://servicerequest.cityofchicago.org/web_intake_chic/Controller?op=locform&invSRType=PETCO&invSRDesc=Petcoke%20Dust&locreq=Y&stnumreqd=Y
+https://servicerequest.cityofchicago.org/web_intake_chic/Controller?op=locform&invSRType=CSC&invSRDesc=Cab%20Complaint&locreq=Y&stnumreqd=Y
+https://servicerequest.cityofchicago.org/web_intake_chic/Controller?op=reset
+https://servicerequest.cityofchicago.org/web_intake_chic/Controller?op=locform&invSRType=BESC&invSRDesc=Business%20and%20Employment%20Scams%20Complaint&locreq=Y&stnumreqd=Y
+https://servicerequest.cityofchicago.org/web_intake_chic/Controller?op=locform&invSRType=PCE
+&invSRDesc=Sign%20Repair%20-%20All%20Other%20Signs&locreq=Y&stnumreqd=Y
