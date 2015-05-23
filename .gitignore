@@ -56,13 +56,13 @@ docs/_build/
 # PyBuilder
 target/
 
-#Latex Documents
+#Latex documents
 *.aux
+*.log
 *.dvi
 
-#Auto-save files
+#Emacs auto-save
 *~
 
-#For stuff we don't share
+#Stuff we don't want to share
 instance/
-tmp/
