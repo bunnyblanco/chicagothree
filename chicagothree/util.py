@@ -4,7 +4,7 @@ import lxml.html as lh
 Some utility functions
 """
 
-def get_url_tags(form):
+def get_tags_from_form(form):
     """
     Get all the tags for the POST request
     """
@@ -19,8 +19,11 @@ def get_url_tags(form):
     for select in selects:
         values[select.name] = []
         options = select.getchildren()
-        for opt in options:
-            values[select.name].append(opt.values()[0])
+        if len(options)>0:
+            for opt in options:
+                vals = opt.values()
+                if len(vals)>0:
+                    values[select.name].append(vals[0])
 
     return tags, values
 
