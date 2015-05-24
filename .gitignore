@@ -64,6 +64,9 @@ target/
 #Emacs auto-save
 *~
 
+#Database
+tags.db
+
 #Stuff we don't want to share
 instance/
 src/

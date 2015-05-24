@@ -33,7 +33,12 @@ def get_url_from_tags(tags, values, url):
     """
     url = url + "?op=locform"
     params = {}
-#For this level of automation, we'd need more time
     for k, v in tags.items():
-        if v == 'text':
-            print "Please enter "+k
+        if v!='':
+            params[k]=v
+        else:
+            params[k]=values[k][0]
+    r = requests.get(url, params=params)
+    if r.status==200:
+        url = r.url
+    return url
