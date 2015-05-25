@@ -11,7 +11,7 @@ session = Session(db)
 Base.metadata.drop_all(db)
 Base.metadata.create_all(db)
 
-def add_dict(tags):
+def add_tags(tags):
     """
     Add a dictionary of tags along with default values
     """
@@ -19,5 +19,10 @@ def add_dict(tags):
         tag = Tag(name=k, value=v)
         session.add(tag)
 
-    session.flush()
+    session.commit()
+
+def add_values(tag, vals):
+    for v in vals:
+        val = Value(name=tag, value=v)
+        session.add(val)
     session.commit()
