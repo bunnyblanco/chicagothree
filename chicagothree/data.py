@@ -11,13 +11,6 @@ session = Session(db)
 Base.metadata.drop_all(db)
 Base.metadata.create_all(db)
 
-def get_tags(form):
-    tags = {}
-    for input in form.inputs:
-        if input.attrib.has_key('type') and input.attrib['type'] != 'button':
-            tags[input.attrib['name']] = input.attrib['value']
-    return tags
-
 def add_dict(tags):
     """
     Add a dictionary of tags along with default values
