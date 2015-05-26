@@ -1,7 +1,7 @@
 import sqlalchemy
-from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.orm import relationship, backref
 import sqlalchemy.ext.declarative as declarative
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relation, backref
 
 Base = declarative.declarative_base()
 
@@ -19,7 +19,7 @@ class Value(Base):
     id = Column(Integer, primary_key=True)
     tag_id = Column(Integer, ForeignKey(Tag.id))
     value = Column(String(20), nullable=False)
-    tag = relationship("Tag", backref=backref('Value', order_by=id))
+    tag = relation('Tag', backref=backref('Value', order_by=id))
 
     def __init__(self, name, value):
         self.tag.name = name

@@ -8,4 +8,5 @@ Added database to store tags
 Added some test coverage
 Added some helper functions
 Changed the layout of functions to allow for database stuff
+Started dealing with exceptions, just
 

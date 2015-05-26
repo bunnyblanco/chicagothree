@@ -11,20 +11,22 @@ def get_tag_value(form):
     tgs = {}
     vals = {}
     inputs = form.inputs
-    selects = form.xpath('//select')
-#Now we parse the tags for the URL
-#We can use the tree to figure out what goes with what
     for input in inputs:
-        tgs[input.name] = input.type
-    for select in selects:
-        vals[select.name] = []
-        options = select.getchildren()
-        if len(options)>0:
+        if input.attrib.has_key('type') and input.attrib.has_key('name'):
+            tgs[input.attrib['name']] = ''
+        elif input.attrib.has_key('type') and input.attrib['type']=='button':
+            print None
+        elif not input.attrib.has_key('type'):
+            options = input.getchildren()
             for opt in options:
-                opt_vals = opt.values()
-                if len(opt_vals)>0:
-                    vals[select.name].append(opt_vals[0])
-
+                if input.attrib.has_key('name') and not vals.has_key(input.attrib['name']):
+                    vals[input.attrib['name']] = []
+                if opt.attrib.has_key('value'):
+                    vals[input.attrib['name']].append(opt.attrib['value'])
+                else:
+                    print opt.attrib
+        else:
+            print "huh?"
     return tgs, vals
 
 def get_tags(form):

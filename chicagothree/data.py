@@ -1,15 +1,30 @@
 import lxml.html as lh
 import sqlalchemy
-from sqlalchemy.orm import Session
-import model
+from chicagothree import session
+from chicagothree.model import *
 
 db = sqlalchemy.engine.create_engine('sqlite:///tags.db')
-from model import *
 Base.metadata.bind=db
-session = Session(db)
+session.connection(bind=db)
 
-Base.metadata.drop_all(db)
-Base.metadata.create_all(db)
+def create_schema():
+    Base.metadata.drop_all()
+    Base.metadata.create_all()
+
+def add_tag(name, val=''):
+    tag = Tag(name=name, value=val)
+    session.add(tag)
+    session.commit()
+
+def add_tag_value(tname, tval):
+    """
+    Add a single required value tval for tag tname
+    """
+    if session.query(Tag.name).filter_by(name=tname).count()==0:
+        add_tag(tname)
+    val = Value(tname, tval)
+    session.add(val)
+    session.commit()
 
 def add_tags(tags):
     """
@@ -21,8 +36,3 @@ def add_tags(tags):
 
     session.commit()
 
-def add_values(tag, vals):
-    for v in vals:
-        val = Value(name=tag, value=v)
-        session.add(val)
-    session.commit()
