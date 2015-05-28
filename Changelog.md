@@ -11,3 +11,4 @@ Changed the layout of functions to allow for database stuff
 Started dealing with exceptions, just
 Cleanned up the database schema
 Added code to make sure database constraints aren't violated
+Added test coverage
