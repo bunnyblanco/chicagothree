@@ -16,14 +16,14 @@ tags2 = util.get_tags(form)
 tgs2, val2 = util.get_tag_value(form)
 
 import sqlalchemy
+import sqlalchemy.orm
 
 db = sqlalchemy.create_engine('sqlite:///tags.db')
 
 chicagothree.Base.metadata.bind=db
-chicagothree.session.connection(bind=db)
+session = sqlalchemy.orm.Session(bind=db)
 
-chicagothree.create_schema()
-#chicagothree.add_tags(tags2)
-chicagothree.add_tag('invTest')
-chicagothree.add_tag_option('invTest', 'TEST') #Stills generates an exception
-
+chicagothree.create_schema(session)
+chicagothree.add_tag('invTest', session)
+chicagothree.add_tag_option('invTest2', 'TEST2', session)
+chicagothree.add_tag_option('invTest', 'TEST', session)

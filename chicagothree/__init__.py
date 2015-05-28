@@ -1,53 +1,58 @@
 import sqlalchemy
 from sqlalchemy import Column, Integer, String, ForeignKey
 import sqlalchemy.orm 
-from sqlalchemy.orm import relationship, backref
+from sqlalchemy.orm import relationship, backref, Session
 import sqlalchemy.ext.declarative as declarative
-from sqlalchemy.orm import Session
 
-session = Session()
 Base = declarative.declarative_base()
 
 class Tag(Base):
     __tablename__='tbl_tag'
     id = Column(Integer, primary_key=True)
     name = Column(String(50), nullable=False, unique=True)
-    default = Column(String(50))
+    options = relationship('Option', backref='Tag')
     
-    def __repr__(self):
+    def __str__(self):
         return '<Tag: %s %s>' % (self.name, self.default)
 
 class Option(Base):
     __tablename__='tbl_option'
     id = Column(Integer, primary_key=True)
-    tag_id = Column(Integer, ForeignKey(Tag.id))
+    tag_id = Column(Integer, ForeignKey('tbl_tag.id'))
     value = Column(String(20), nullable=False)
-    tag = relationship(Tag, backref=backref('tbl_option', order_by=id))
 
-    def __repr__(self):
-        return '<Tag Options:  %s %s>' % (self.tag, self.value)
+    def __str__(self):
+        return '<Option:  %s>' % (self.value)
 
-def create_schema():
+def create_schema(session):
+    Base.metadata.bind=session.bind
     Base.metadata.drop_all()
     Base.metadata.create_all()
 
-def add_tag(tname, opt=''):
-    tg = Tag(name=tname, default=opt)
-    if session.query(Tag.name).filter_by(name=tname).count()==0:
-        tg = Tag(name=tname, default=opt)
+def add_tag(tname, session):
+    q = session.query(Tag.id).filter_by(name=tname)
+    if len(q.all())==1:
+        tag_id = q.value(Tag.id)
+    else:
+        tg = Tag(name=tname)
+        session.add(tg)
+        tag_id = tg.id
+    session.commit()
+    return tag_id
+
+def add_tag_option(tag, option, session):
+    q = session.query(Tag.id).filter_by(name=tag)
+    if len(q.all())==1:
+        tag_id = q.value(Tag.id)
+    else:
+        tg = Tag(name=tag)
         session.add(tg)
         session.commit()
-    return tg
-
-def add_tag_option(tname, opt):
-    """
-    Add a single option value opt for tag tname
-    """
-    if session.query(Tag.name).filter_by(name=tname).count()==0:
-        tg = add_tag(tname)
-    else:
-        tg = Tag(name=tname, default='')
-    val = Option(tag=tg, value=opt)
-    session.add(val)
+        tag_id = tg.id
+    q2 = session.query(Option.id, Option.tag_id).filter_by(tag_id=tag_id, value=option)
+    if len(q2.all())==0:
+        opt = Option(tag_id=tag_id, value=option)
+        session.add(opt)
     session.commit()
+    return tag_id
 

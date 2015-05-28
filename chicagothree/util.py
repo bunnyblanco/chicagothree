@@ -6,7 +6,7 @@ Some utility functions
 
 def get_tag_value(form):
     """
-    Get all the tags and indicated values for the POST request
+    Get all the tags and indicated options for the POST request
     """
     tgs = {}
     vals = {}
@@ -44,7 +44,7 @@ def get_url_from_form(params, form, url):
     Construct a URL from the params, tags, and indicated values given by
     the form.
     """
-    url = url+form.action
+    url = ''.join(url,form.action)
     tgs0, val = util.get_tag_value(form)
 
     return url
