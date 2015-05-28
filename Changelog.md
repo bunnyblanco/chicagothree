@@ -1,4 +1,7 @@
 # Change Log
+
+alpha:
+
 Created a package
 Added some local config
 Made the repo a formal Github repo
@@ -11,4 +14,7 @@ Changed the layout of functions to allow for database stuff
 Started dealing with exceptions, just
 Cleanned up the database schema
 Added code to make sure database constraints aren't violated
+
+v0.1:
+
 Added test coverage

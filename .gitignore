@@ -66,6 +66,7 @@ target/
 
 #Database
 tags.db
+tmp.db
 
 #Stuff we don't want to share
 instance/

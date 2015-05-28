@@ -1,5 +1,5 @@
 import sqlalchemy
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, ForeignKey, literal
 import sqlalchemy.orm 
 from sqlalchemy.orm import relationship, backref, Session
 import sqlalchemy.ext.declarative as declarative
@@ -31,7 +31,7 @@ def create_schema(session):
 
 def add_tag(tname, session):
     q = session.query(Tag.id).filter_by(name=tname)
-    if len(q.all())==1:
+    if session.query(literal(True)).filter(q.exists()).scalar():
         tag_id = q.value(Tag.id)
     else:
         tg = Tag(name=tname)
@@ -40,19 +40,26 @@ def add_tag(tname, session):
     session.commit()
     return tag_id
 
-def add_tag_option(tag, option, session):
-    q = session.query(Tag.id).filter_by(name=tag)
-    if len(q.all())==1:
+def add_tag_option(tagopt, session):
+    """
+    Add a single (tag, option) pair
+    """
+    q = session.query(Tag.id).filter_by(name=tagopt[0])
+    if session.query(literal(True)).filter(q.exists()).scalar():
+#    'Exists'
         tag_id = q.value(Tag.id)
     else:
-        tg = Tag(name=tag)
+#    'Nada'
+        tg = Tag(name=tagopt[0])
         session.add(tg)
         session.commit()
         tag_id = tg.id
-    q2 = session.query(Option.id, Option.tag_id).filter_by(tag_id=tag_id, value=option)
-    if len(q2.all())==0:
-        opt = Option(tag_id=tag_id, value=option)
+    q2 = session.query(Option.id, Option.tag_id).filter_by(tag_id=tag_id, value=tagopt[1])
+    if session.query(literal(True)).filter(q2.exists()).scalar():
+        return tag_id, q2.value(Option.id)
+    else:
+        opt = Option(tag_id=tag_id, value=tagopt[1])
         session.add(opt)
-    session.commit()
-    return tag_id
+        session.commit()
+        return tag_id, opt.id
 
