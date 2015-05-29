@@ -35,5 +35,18 @@ class TestDatabaseAPI(ut.TestCase):
         self.assertEqual(len(q.all()),2)
         self.assertEqual(len(q2.all()),2)
 
+    def test_tagid_option_insert(self):
+        chicagothree.create_schema(self.session)
+        q = self.session.query(chicagothree.Tag.id)
+        self.assertEqual(len(q.all()),0)
+        tag_id = chicagothree.add_tag(tname='invTest', session=self.session)
+        opts = ['N','NE','E','SE','S','SW','W','NW']
+        tagopts = ('invTest', opts)
+        for opt in opts:
+            chicagothree.add_tagid_option((tag_id, opt), self.session)
+        self.session.commit()
+        q2 = self.session.query(chicagothree.Option.id, chicagothree.Option.value).filter_by(tag_id=tag_id)
+        self.assertEqual(len(q2.all()),len(opts))
+
 if __name__=='__main__':
     ut.main()

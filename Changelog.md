@@ -18,3 +18,5 @@ Added code to make sure database constraints aren't violated
 v0.1:
 
 Added test coverage
+Refactored the code to use the better API
+Added test coverage
