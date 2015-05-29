@@ -26,7 +26,7 @@ def get_tag_value(form):
                 else:
                     print opt.attrib
         else:
-            print "huh?"
+            print "Unknown Typeless INPUT"
     return tgs, vals
 
 def get_tags(form):
