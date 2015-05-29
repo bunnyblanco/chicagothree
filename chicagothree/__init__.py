@@ -30,14 +30,17 @@ def create_schema(session):
     Base.metadata.create_all()
 
 def add_tag(tname, session):
+    """
+    Add a unique tag to the database.  Returns the associated tag_id
+    """
     q = session.query(Tag.id).filter_by(name=tname)
     if session.query(literal(True)).filter(q.exists()).scalar():
         tag_id = q.value(Tag.id)
     else:
         tg = Tag(name=tname)
         session.add(tg)
+        session.commit()
         tag_id = tg.id
-    session.commit()
     return tag_id
 
 def add_tagid_option(tagopt, session):
