@@ -1,5 +1,20 @@
-import requests
+"""
+Set of code for simplifying the process of working with forms and URL used
+by the City of Chicago's online 311 service.  This file should define all code
+specific to the City of Chicago's system.
+"""
 import lxml.html as lh
+
+base_url = 'https://servicerequest.cityofchicago.org/web_intake_chic/'
+
+def reset_request():
+    """
+    Reset the request by generating the appropriate URL.  A way to note
+    the correct syntax...
+    """
+    action = "Controller?op=reset"
+    url = base_url+action
+    return url
 
 def get_attrib_url(attrib):
     """
@@ -19,21 +34,11 @@ def get_form_action(form):
     else:
         return ''
 
-def get_form_url(form):
+def get_form_url(form): #A work in progress...
     sep = "&"
-    tags = []
-    for k, v in form.items():
-        if k=='action':
-            tags.append(v)
-        elif k=='name' and len(tags)!=0:
-            tags.append(v)
-        elif k=='method':
-            method = v
-        else:
-            continue
-    for child in form.getchildren():
-        if child.attrib.has_key('type') and child.attrib['type']=='hidden':
-            tags.append(get_attrib_url(child.attrib))
-    url = sep.join(tags)
+    url_tags = []
+    url_tags = [form.action,form.attrib['name']]
+    url = sep.join(url_tags)
+    url = base_url+url
     return url
 
